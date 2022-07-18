@@ -1,32 +1,44 @@
 import { useState } from "react";
 
-export default function NumberPicker(): JSX.Element {
-  const [counterValueFromCurrentRender, queueRerenderWithNewCounterValue] =
-    useState(0);
-  const [favouriteValueFromCurrentRender, queueRerenderWithNewFavouriteValue] =
-    useState(0);
+export default function EmojiPicker(): JSX.Element {
+  const [currentEmoji, queueRerenderWithNewEmoji] = useState(" ");
+  const [previousEmoji, queueRerenderWithPreviousEmoji] = useState(" ");
 
-  const handleAddOneToCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender + 1);
+  const handlePickDog = () => {
+    queueRerenderWithNewEmoji("🐕");
+    queueRerenderWithPreviousEmoji(currentEmoji);
   };
 
-  const handleSubtractOneFromCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 1);
+  const handlePickMapOfJapan = () => {
+    queueRerenderWithNewEmoji("🗾");
+    queueRerenderWithPreviousEmoji(currentEmoji);
   };
 
-  const handleStoreCurrentCount = () => {
-    queueRerenderWithNewFavouriteValue(counterValueFromCurrentRender);
+  const handlePickClock = () => {
+    queueRerenderWithNewEmoji("⏰");
+    queueRerenderWithPreviousEmoji(currentEmoji);
+  };
+
+  const handlePickDerelictHouse = () => {
+    queueRerenderWithNewEmoji("🏚️");
+    queueRerenderWithPreviousEmoji(currentEmoji);
+  };
+
+  const handlePickClockAgain = () => {
+    queueRerenderWithNewEmoji("⏰ again?!");
+    queueRerenderWithPreviousEmoji(currentEmoji);
   };
 
   return (
     <>
-      <h1>Number picker</h1>
-      <p>Your stored number: {favouriteValueFromCurrentRender}</p>
-      <p>Counter: {counterValueFromCurrentRender}</p>
-      <button onClick={handleSubtractOneFromCounter}>-1</button>
-      <button onClick={handleAddOneToCounter}>+1</button>
-      <hr />
-      <button onClick={handleStoreCurrentCount}>Store current count</button>
+      <h1>Creative emoji picker</h1>
+      <p>Your previous emoji: {previousEmoji}</p>
+      <p>Your current emoji: {currentEmoji}</p>
+      <button onClick={handlePickDog}>🐕</button>
+      <button onClick={handlePickMapOfJapan}>🗾</button>
+      <button onClick={handlePickClock}>⏰</button>
+      <button onClick={handlePickDerelictHouse}>🏚️</button>
+      <button onClick={handlePickClockAgain}>⏰</button>
     </>
   );
 }
