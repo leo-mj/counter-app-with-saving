@@ -9,10 +9,10 @@ export default function EmojiLister(
 ): JSX.Element {
   const listedEmoji: ListedEmoji = {};
   listedEmoji[i] = emoji;
-  if (emoji !== "" && i >= emojiArray.length - 5) {
+  if (i >= emojiArray.length - 6 && i < emojiArray.length - 1) {
     return (
       <li>
-        {i}. {listedEmoji[i]}
+        {i + 1}. {listedEmoji[i]}
       </li>
     );
   } else {
